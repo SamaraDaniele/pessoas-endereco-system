@@ -9,39 +9,39 @@
 
 Um sistema robusto e escalável de gerenciamento de pessoas e endereços desenvolvido em **Java** com arquitetura em camadas e persistência em banco de dados PostgreSQL.
 
-[Documentação](#-documentação) • [Requisitos](#-requisitos-do-sistema) • [Instalação](#-instalação-e-configuração) • [Como Usar](#-como-usar)
+[Documentação](#descrição-do-projeto) • [Requisitos](#requisitos-do-sistema) • [Instalação](#instalação-e-configuração) • [Como Usar](#como-usar)
 
 </div>
 
 ---
 
-## 📋 Descrição do Projeto
+## Descrição do Projeto
 
 **Pessoas e Endereço System** é uma aplicação de linha de comando que fornece um conjunto completo de operações CRUD (Create, Read, Update, Delete) para gerenciar registros de pessoas e endereços. O sistema implementa validações de regras de negócio e garante a integridade dos dados através de relacionamentos bem definidos no banco de dados.
 
 ### Características Principais
 
-✅ **Gerenciamento Completo de Pessoas**
+**Gerenciamento Completo de Pessoas**
 - Inserção, edição e exclusão de registros
 - Busca por ID e nome
 - Listagem com filtros por data de nascimento
 - Cálculo automático de idade
 - Validação de CPF
 
-✅ **Gerenciamento Completo de Endereços**
+**Gerenciamento Completo de Endereços**
 - Inserção, edição e exclusão de endereços
 - Busca por ID e logradouro
 - Filtros por estado e cidade
 - Listagem de endereços com pessoas associadas
 
-✅ **Integridade de Dados**
+**Integridade de Dados**
 - Relacionamento um-para-muitos entre Endereço e Pessoa
 - Validações de dados obrigatórios
 - Tratamento adequado de exclusões em cascata
 
 ---
 
-## 🏗️ Arquitetura
+## Arquitetura
 
 O projeto segue o padrão **Model-View-Controller (MVC)** com separação clara de responsabilidades:
 
@@ -73,7 +73,7 @@ O projeto segue o padrão **Model-View-Controller (MVC)** com separação clara 
 
 ---
 
-## 🛠️ Requisitos do Sistema
+## Requisitos do Sistema
 
 ### Pré-requisitos Obrigatórios
 
@@ -97,7 +97,7 @@ psql --version
 
 ---
 
-## 📥 Instalação e Configuração
+## Instalação e Configuração
 
 ### 1. Clonar o Repositório
 
