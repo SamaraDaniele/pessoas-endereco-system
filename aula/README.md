@@ -107,7 +107,7 @@ Endereco
 
 ---
 
-**Autor:** [Seu Nome]  
+**Autor:** Samara Daniele  
 **Data:** Abril de 2026  
 **Disciplina:** Estrutura de Dados 2  
 **Professor:** Nelson
