@@ -1,10 +1,3 @@
-/**
- * Entidade: Pessoa
- * 
- * Representa um indivíduo no sistema com dados pessoais, contato e localização.
- * Possui validações e cálculo automático de idade baseado na data de nascimento.
- * Pode estar associada a um endereço único.
- */
 package com.example.aula.model;
 
 import java.time.LocalDate;

@@ -1,10 +1,3 @@
-/**
- * Data Access Object (DAO): EnderecoDAO
- * 
- * Responsável por todas as operações de persistência relacionadas à entidade Endereço.
- * Implementa o padrão CRUD (Create, Read, Update, Delete) com filtros
- * avançados (por estado, cidade, logradouro).
- */
 package com.example.aula.dao;
 
 import com.example.aula.connection.DatabaseConnection;

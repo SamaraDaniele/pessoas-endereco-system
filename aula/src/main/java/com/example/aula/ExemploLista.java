@@ -1,20 +1,3 @@
-/**
- * ================================================================
- * Classe Principal - Sistema de Gerenciamento de Pessoas e Endereços
- * ================================================================
- * Responsabilidade: Orquestração do menu interativo e operações CRUD
- * 
- * Funcionalidades:
- * - Gerenciamento completo de Pessoas (CRUD)
- * - Gerenciamento completo de Endereços (CRUD)
- * - Validações de regras de negócio
- * - Interface menu-driven em linha de comando
- * 
- * Versão: 1.0.0
- * Última atualização: Abril 2026
- * ================================================================
- */
-
 package com.example.aula;
 
 import com.example.aula.dao.EnderecoDAO;

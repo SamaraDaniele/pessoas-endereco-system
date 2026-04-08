@@ -1,10 +1,3 @@
-/**
- * Entidade: Endereco
- * 
- * Representa uma localização geográfica no sistema.
- * Um endereço pode ser compartilhado por múltiplas pessoas.
- * Armazena informações estruturadas de localização (logradouro, cidade, estado, país).
- */
 package com.example.aula.model;
 
 import java.time.LocalDateTime;
