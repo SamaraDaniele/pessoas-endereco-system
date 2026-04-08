@@ -28,8 +28,7 @@ public class ExemploLista {
             switch (opcao) {
                 case "1" -> gerenciarEnderecos();
                 case "2" -> gerenciarPessoas();
-                case "3" -> demonstrarRegrasNegocio();
-                case "4" -> {
+                case "3" -> {
                     System.out.println("\nSUCESSO: Programa finalizado!");
                     rodando = false;
                 }
@@ -46,8 +45,7 @@ public class ExemploLista {
         System.out.println("=".repeat(50));
         System.out.println("1. Gerenciar Endereços");
         System.out.println("2. Gerenciar Pessoas");
-        System.out.println("3. Demonstrar Regras de Negócio");
-        System.out.println("4. Sair");
+        System.out.println("3. Sair");
         System.out.print("\nEscolha uma opção: ");
     }
 
@@ -470,75 +468,5 @@ public class ExemploLista {
         System.out.println("   [ID: " + p.getId() + "] " + p.getNomeCompleto() + 
                           " | CPF: " + p.getCpfFormatado() + " | Idade: " + 
                           p.calcularIdade() + " | End.: " + enderecoInfo);
-    }
-
-    private static void demonstrarRegrasNegocio() {
-        System.out.println("\n" + "=".repeat(50));
-        System.out.println("   DEMONSTRAR REGRAS DE NEGÓCIO");
-        System.out.println("=".repeat(50));
-
-        System.out.println("\n🔍 Regra 1: Pessoa SEM endereço não pode ser inserida");
-        System.out.print("Deseja testar? (s/n): ");
-        if (scanner.nextLine().equalsIgnoreCase("s")) {
-            testarRegraEnderecoObrigatorio();
-        }
-
-        System.out.println("\n🔍 Regra 2: Quando endereço é deletado, pessoas ficam com endereco_id = NULL");
-        System.out.print("Deseja testar? (s/n): ");
-        if (scanner.nextLine().equalsIgnoreCase("s")) {
-            testarRegraDelecaoEndereco();
-        }
-
-        System.out.println("\nSUCESSO: Demonstração concluída!");
-    }
-
-    private static void testarRegraEnderecoObrigatorio() {
-        System.out.println("\n--- Testando inserção pessoa sem endereço ---");
-        
-        Pessoa pessoaInvalida = new Pessoa(
-            0, "Teste", "Inválida", LocalDate.of(1990, 5, 15), "99999999999", null, null
-        );
-
-        System.out.println("Válida? " + pessoaInvalida.possuiEnderecoValido());
-        
-        if (pessoaDAO.inserir(pessoaInvalida)) {
-            System.out.println("ERRO: ERRO: Pessoa foi inserida sem endereço!");
-        } else {
-            System.out.println("SUCESSO: CORRETO: Pessoa foi REJEITADA (sem endereço)");
-        }
-    }
-
-    private static void testarRegraDelecaoEndereco() {
-        System.out.println("\n--- Testando ON DELETE SET NULL ---");
-        System.out.println("1. Criando endereço temporário...");
-        Endereco endereco = new Endereco(0, "Teste", "999", "São Paulo", "SP", "Brasil", null);
-        
-        if (!enderecoDAO.inserir(endereco)) {
-            System.out.println("ERRO: Erro ao criar endereço!");
-            return;
-        }
-
-        List<Endereco> ult = enderecoDAO.recuperarTodos();
-        int enderecoId = ult.get(ult.size() - 1).getId();
-
-        System.out.println("2. Criando pessoa...");
-        Pessoa pessoa = new Pessoa(0, "Teste", "Orfã", LocalDate.of(1990, 1, 1), "11111111111", enderecoId, null);
-        
-        if (!pessoaDAO.inserir(pessoa)) {
-            System.out.println("ERRO: Erro ao criar pessoa!");
-            return;
-        }
-
-        System.out.println("3. DELETANDO o endereço...");
-        enderecoDAO.excluir(enderecoId);
-
-        System.out.println("4. Verificando status...");
-        pessoa = pessoaDAO.recuperarPorId(pessoa.getId());
-        
-        if (pessoa.getEnderecoId() == null) {
-            System.out.println("SUCESSO: CORRETO: Pessoa ficou órfã (endereco_id = NULL)");
-        } else {
-            System.out.println("ERRO: ERRO: A pessoa ainda possui um endereço!");
-        }
     }
 }
