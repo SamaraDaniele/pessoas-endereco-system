@@ -1,11 +1,7 @@
-# Lista de Exercícios - Bimestre 1
-## Estrutura de Dados 2
-**Prof. Nelson**
-
----
+# Pessoas e Endereço System
 
 ## 📋 Descrição do Projeto
-Sistema de gerenciamento de pessoas e endereços, desenvolvido em Java com persistência em banco de dados.
+Sistema robusto de gerenciamento de pessoas e endereços desenvolvido em Java com persistência em banco de dados. Aplicação CRUD completa com arquitetura em camadas (DAO Pattern) e validações de regras de negócio.
 
 ## 📁 Estrutura do Projeto
 
@@ -64,7 +60,8 @@ aula/
 - **Java 11+**
 - **Spring Boot**
 - **Maven**
-- **Banco de Dados Relacional**
+- **PostgreSQL**
+- **JDBC**
 
 ## 📝 Como Compilar
 
@@ -107,7 +104,6 @@ Endereco
 
 ---
 
-**Autor:** [Seu Nome]  
+**Autor:** Samara Daniele  
 **Data:** Abril de 2026  
-**Disciplina:** Estrutura de Dados 2  
-**Professor:** Nelson
+**Versão:** 1.0.0

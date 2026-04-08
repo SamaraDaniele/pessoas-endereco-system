@@ -1,7 +1,9 @@
 /**
- * Classe: DatabaseConnection
+ * Gerenciador de Conexão: DatabaseConnection
+ * 
  * Responsável por gerenciar a conexão com o banco de dados PostgreSQL.
- * Implementa padrão Singleton para garantir uma única instância de conexão.
+ * Implementa o padrão Singleton para garantir uma única instância de conexão
+ * e facilitar o acesso em toda a aplicação.
  */
 package com.example.aula.connection;
 

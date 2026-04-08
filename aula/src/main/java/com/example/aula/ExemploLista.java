@@ -1,17 +1,17 @@
 /**
  * ================================================================
- * LISTA DE EXERCÍCIOS - BIMESTRE 1 - ESTRUTURA DE DADOS 2
+ * Classe Principal - Sistema de Gerenciamento de Pessoas e Endereços
  * ================================================================
- * Disciplina: Estrutura de Dados 2
- * Professor: Nelson
- * Ano: 2026
+ * Responsabilidade: Orquestração do menu interativo e operações CRUD
  * 
- * Descrição: Sistema de gerenciamento de pessoas e endereços
- *            com operações completas de CRUD (Create, Read, Update, Delete)
- *            e validações de regras de negócio.
+ * Funcionalidades:
+ * - Gerenciamento completo de Pessoas (CRUD)
+ * - Gerenciamento completo de Endereços (CRUD)
+ * - Validações de regras de negócio
+ * - Interface menu-driven em linha de comando
  * 
- * Autor: [SEU NOME]
- * Data de Criação: Abril de 2026
+ * Versão: 1.0.0
+ * Última atualização: Abril 2026
  * ================================================================
  */
 

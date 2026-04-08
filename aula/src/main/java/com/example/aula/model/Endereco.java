@@ -1,7 +1,9 @@
 /**
- * Modelo: Endereco
- * Representa um endereço no sistema que pode ser compartilhado por várias pessoas.
- * Armazena informações geográficas completas.
+ * Entidade: Endereco
+ * 
+ * Representa uma localização geográfica no sistema.
+ * Um endereço pode ser compartilhado por múltiplas pessoas.
+ * Armazena informações estruturadas de localização (logradouro, cidade, estado, país).
  */
 package com.example.aula.model;
 

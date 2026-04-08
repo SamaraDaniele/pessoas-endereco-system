@@ -1,7 +1,9 @@
 /**
- * DAO: PessoaDAO (Data Access Object)
- * Gerencia todas as operações de banco de dados relacionadas à entidade Pessoa.
- * Implementa padrão CRUD (Create, Read, Update, Delete) com validações.
+ * Data Access Object (DAO): PessoaDAO
+ * 
+ * Responsável por todas as operações de persistência relacionadas à entidade Pessoa.
+ * Implementa o padrão CRUD (Create, Read, Update, Delete) com validações
+ * e gerenciamento de transações com banco de dados.
  */
 package com.example.aula.dao;
 

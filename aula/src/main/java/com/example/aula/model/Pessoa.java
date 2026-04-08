@@ -1,7 +1,9 @@
 /**
- * Modelo: Pessoa
- * Representa uma pessoa no sistema com dados pessoais e referência a endereço.
- * Possui validações e cálculo automático de idade.
+ * Entidade: Pessoa
+ * 
+ * Representa um indivíduo no sistema com dados pessoais, contato e localização.
+ * Possui validações e cálculo automático de idade baseado na data de nascimento.
+ * Pode estar associada a um endereço único.
  */
 package com.example.aula.model;
 
