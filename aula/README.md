@@ -1,49 +1,332 @@
 # Pessoas e Endereço System
 
-<div align="center">
-
-![Java](https://img.shields.io/badge/Java-17+-blue.svg)
-![Maven](https://img.shields.io/badge/Maven-3.9+-red.svg)
-![PostgreSQL](https://img.shields.io/badge/PostgreSQL-15+-336791.svg)
-![License](https://img.shields.io/badge/License-MIT-green.svg)
-
-Um sistema robusto e escalável de gerenciamento de pessoas e endereços desenvolvido em **Java** com arquitetura em camadas e persistência em banco de dados PostgreSQL.
-
-[Documentação](#descrição-do-projeto) • [Requisitos](#requisitos-do-sistema) • [Instalação](#instalação-e-configuração) • [Como Usar](#como-usar)
-
-</div>
+Sistema robusto e escalável para gerenciamento de pessoas e endereços desenvolvido em Java com arquitetura em camadas e persistência em banco de dados PostgreSQL.
 
 ---
 
-## Descrição do Projeto
+## Visão Geral
 
-**Pessoas e Endereço System** é uma aplicação de linha de comando que fornece um conjunto completo de operações CRUD (Create, Read, Update, Delete) para gerenciar registros de pessoas e endereços. O sistema implementa validações de regras de negócio e garante a integridade dos dados através de relacionamentos bem definidos no banco de dados.
+**Pessoas e Endereço System** é uma aplicação de linha de comando que fornece operações CRUD completas (Create, Read, Update, Delete) para gerenciar registros de pessoas e endereços. O sistema implementa validações de regras de negócio e garante integridade dos dados através de relacionamentos bem definidos.
 
-### Características Principais
+### Características
 
-**Gerenciamento Completo de Pessoas**
-- Inserção, edição e exclusão de registros
-- Busca por ID e nome
-- Listagem com filtros por data de nascimento
-- Cálculo automático de idade
-- Validação de CPF
-
-**Gerenciamento Completo de Endereços**
-- Inserção, edição e exclusão de endereços
-- Busca por ID e logradouro
-- Filtros por estado e cidade
-- Listagem de endereços com pessoas associadas
-
-**Integridade de Dados**
-- Relacionamento um-para-muitos entre Endereço e Pessoa
+- Gerenciamento completo de pessoas (inserção, edição, exclusão, busca)
+- Gerenciamento completo de endereços (inserção, edição, exclusão, busca)
+- Relacionamento um-para-muitos entre endereço e pessoa
 - Validações de dados obrigatórios
-- Tratamento adequado de exclusões em cascata
+- Proteção contra SQL Injection
+- Arquitetura em camadas (DAO Pattern)
+
+---
+
+## Tecnologias
+
+- Java 17
+- Apache Maven
+- PostgreSQL
+- JDBC
+- Spring Boot
+
+---
+
+## Requisitos do Sistema
+
+Antes de começar, certifique-se de ter instalado:
+
+- Java Development Kit (JDK) 17 ou superior
+- Apache Maven 3.9 ou superior
+- PostgreSQL 15 ou superior
+- Git (opcional)
+
+### Verificação
+
+```bash
+java -version
+mvn -version
+psql --version
+```
+
+---
+
+## Instalação
+
+### 1. Clonar o Repositório
+
+```bash
+git clone https://github.com/SamaraDaniele/pessoas-endereco-system.git
+cd pessoas-endereco-system
+```
+
+### 2. Configurar Banco de Dados
+
+Crie o banco de dados e as tabelas:
+
+```sql
+CREATE DATABASE LISTABIM1;
+
+\c LISTABIM1;
+
+CREATE TABLE endereco (
+    id SERIAL PRIMARY KEY,
+    logradouro VARCHAR(255) NOT NULL,
+    numero VARCHAR(10) NOT NULL,
+    cidade VARCHAR(100) NOT NULL,
+    estado CHAR(2) NOT NULL,
+    pais VARCHAR(100) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE pessoa (
+    id SERIAL PRIMARY KEY,
+    nome VARCHAR(100) NOT NULL,
+    sobrenome VARCHAR(100) NOT NULL,
+    data_nascimento DATE NOT NULL,
+    cpf VARCHAR(14) UNIQUE NOT NULL,
+    endereco_id INTEGER REFERENCES endereco(id) ON DELETE SET NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+```
+
+### 3. Configurar Credenciais
+
+Edite `src/main/java/com/example/aula/connection/DatabaseConnection.java`:
+
+```java
+private static final String URL = "jdbc:postgresql://localhost:5433/LISTABIM1";
+private static final String USER = "seu_usuario";
+private static final String PASSWORD = "sua_senha";
+```
+
+### 4. Compilar
+
+```bash
+mvn clean compile
+```
+
+---
+
+## Como Usar
+
+### Iniciar Aplicação
+
+```bash
+java -cp target/classes com.example.aula.ExemploLista
+```
+
+Ou através do Maven:
+
+```bash
+mvn exec:java -Dexec.mainClass="com.example.aula.ExemploLista"
+```
+
+### Menu Principal
+
+```
+==================================================
+   SISTEMA DE GERENCIAMENTO - MENU PRINCIPAL
+==================================================
+1. Gerenciar Endereços
+2. Gerenciar Pessoas
+3. Sair
+
+Escolha uma opção:
+```
+
+### Operações Disponíveis
+
+**Gerenciar Endereços**
+- Inserir novo endereço
+- Editar endereço
+- Excluir endereço
+- Buscar endereço por ID
+- Buscar endereço por logradouro
+- Listar todos os endereços
+- Listar endereços por estado
+- Listar endereços por cidade
+
+**Gerenciar Pessoas**
+- Inserir nova pessoa
+- Editar pessoa
+- Excluir pessoa
+- Buscar pessoa por ID
+- Buscar pessoa por nome
+- Listar todas as pessoas
+- Listar pessoas por data de nascimento
+
+---
+
+## Estrutura do Projeto
+
+```
+pessoas-endereco-system/
+├── src/
+│   └── main/
+│       ├── java/com/example/aula/
+│       │   ├── ExemploLista.java
+│       │   ├── AulaApplication.java
+│       │   ├── model/
+│       │   │   ├── Pessoa.java
+│       │   │   └── Endereco.java
+│       │   ├── dao/
+│       │   │   ├── PessoaDAO.java
+│       │   │   └── EnderecoDAO.java
+│       │   └── connection/
+│       │       └── DatabaseConnection.java
+│       └── resources/
+│           ├── application.properties
+│           ├── static/
+│           └── templates/
+├── pom.xml
+├── compilar.bat
+├── final_setup.sql
+└── README.md
+```
 
 ---
 
 ## Arquitetura
 
-O projeto segue o padrão **Model-View-Controller (MVC)** com separação clara de responsabilidades:
+O projeto segue o padrão Model-View-Controller com separação clara de responsabilidades:
+
+```
+Camada Apresentação (CLI)
+        ↓
+Camada de Acesso (DAO)
+        ↓
+Camada de Modelo
+        ↓
+Camada de Conexão
+        ↓
+PostgreSQL
+```
+
+---
+
+## Modelo de Dados
+
+### Tabela endereco
+
+| Campo | Tipo | Descrição |
+|-------|------|-----------|
+| id | SERIAL (PK) | Identificador único |
+| logradouro | VARCHAR(255) | Nome da rua/avenida |
+| numero | VARCHAR(10) | Número do imóvel |
+| cidade | VARCHAR(100) | Nome da cidade |
+| estado | CHAR(2) | Código do estado |
+| pais | VARCHAR(100) | Nome do país |
+| created_at | TIMESTAMP | Data de criação |
+
+### Tabela pessoa
+
+| Campo | Tipo | Descrição |
+|-------|------|-----------|
+| id | SERIAL (PK) | Identificador único |
+| nome | VARCHAR(100) | Primeiro nome |
+| sobrenome | VARCHAR(100) | Sobrenome |
+| data_nascimento | DATE | Data de nascimento |
+| cpf | VARCHAR(14) | CPF formatado |
+| endereco_id | INTEGER (FK) | Referência ao endereço |
+| created_at | TIMESTAMP | Data de criação |
+
+---
+
+## Segurança
+
+O projeto implementa as seguintes medidas de segurança:
+
+- Proteção contra SQL Injection via Prepared Statements
+- Validação de entrada de usuário
+- Tratamento adequado de exceções
+- Senhas armazenadas de forma segura
+
+---
+
+## Exemplos
+
+### Inserir um Novo Endereço
+
+1. Menu principal > Opção 1
+2. Submenu > Opção 1
+3. Preencha os dados:
+   - Logradouro: Avenida Paulista
+   - Número: 1000
+   - Cidade: São Paulo
+   - Estado: SP
+   - País: Brasil
+
+### Inserir uma Nova Pessoa
+
+1. Menu principal > Opção 2
+2. Submenu > Opção 1
+3. Preencha os dados:
+   - Nome: João
+   - Sobrenome: Silva
+   - Data de Nascimento: 1990-05-15
+   - CPF: 123.456.789-10
+   - ID do Endereço: 1
+
+---
+
+## Troubleshooting
+
+**Problema:** Driver PostgreSQL não encontrado
+```bash
+Solução: mvn clean install
+```
+
+**Problema:** Conexão recusada
+```bash
+Verifique se o PostgreSQL está rodando:
+psql -U postgres -c "\l"
+```
+
+**Problema:** Tabelas não encontradas
+```bash
+Execute o script de setup:
+psql -U postgres -d LISTABIM1 -f final_setup.sql
+```
+
+---
+
+## Contribuindo
+
+Contribuições são bem-vindas! Para contribuir:
+
+1. Faça um fork do repositório
+2. Crie uma branch para sua feature (`git checkout -b feature/nome`)
+3. Commit suas mudanças (`git commit -m 'Descricao'`)
+4. Push para a branch (`git push origin feature/nome`)
+5. Abra um Pull Request
+
+---
+
+## Licença
+
+MIT License - veja o arquivo LICENSE para detalhes.
+
+---
+
+## Autor
+
+**Samara Daniele**
+- GitHub: [@SamaraDaniele](https://github.com/SamaraDaniele)
+- Email: samaradaniele61@gmail.com
+
+---
+
+## Suporte
+
+Dúvidas ou bugs? Abra uma Issue no GitHub.
+
+---
+
+<div align="center">
+
+**Desenvolvido em Java**
+
+Versão 1.0.0 | Abril de 2026
+
+</div>
 
 ```
 ┌─────────────────────────────────────────────┐
