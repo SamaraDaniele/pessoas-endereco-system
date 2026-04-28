@@ -25,7 +25,6 @@ Sistema robusto e escalável para gerenciamento de pessoas e endereços desenvol
 - Apache Maven
 - PostgreSQL
 - JDBC
-- Spring Boot
 
 ---
 
