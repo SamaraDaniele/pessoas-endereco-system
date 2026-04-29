@@ -25,7 +25,6 @@ Sistema robusto e escalável para gerenciamento de pessoas e endereços desenvol
 - Apache Maven
 - PostgreSQL
 - JDBC
-- Spring Boot
 
 ---
 
@@ -552,18 +551,6 @@ $env:JAVA_HOME = "C:\Program Files\Java\jdk-17"
 $env:MAVEN_HOME = "C:\Program Files\maven"
 ```
 
-### Arquivo application.properties
-
-```properties
-server.port=8080
-spring.datasource.url=jdbc:postgresql://localhost:5433/LISTABIM1
-spring.datasource.username=postgres
-spring.datasource.password=1130
-spring.jpa.hibernate.ddl-auto=validate
-```
-
----
-
 ## 🧪 Testes e Validação
 
 ### Compiling and Testing
@@ -696,19 +683,6 @@ psql -U postgres -c "\l"
 # Execute o script de setup
 psql -U postgres -d LISTABIM1 -f final_setup.sql
 ```
-
----
-
-## 📈 Roadmap Futuro
-
-- [ ] Interface gráfica (Swing/JavaFX)
-- [ ] API REST com Spring Boot
-- [ ] Autenticação e autorização
-- [ ] Exportação de dados (CSV, PDF)
-- [ ] Integração com microserviços
-- [ ] Containerização (Docker)
-
----
 
 ## 🤝 Contribuindo
 
